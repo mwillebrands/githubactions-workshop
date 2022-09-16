@@ -15,7 +15,6 @@ jobs:
       WORKDIR: "./src/Helloworld"
       CONFIG: "Release"
       AZURE_FUNCTIONAPP_NAME: "func3"
-      AZURE_FUNCTIONAPP_PACKAGE_PATH: "${{env.WORKDIR}}/bin/Release/net6.0/publish/"
     defaults:
       run:
         working-directory: ${{env.WORKDIR}}
@@ -46,5 +45,5 @@ jobs:
       uses: Azure/functions-action@v1
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+        package: "${{env.WORKDIR}}/bin/Release/net6.0/publish/"
         publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
